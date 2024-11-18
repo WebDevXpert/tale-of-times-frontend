@@ -10,7 +10,9 @@ export default function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`);
+        const response = await axios.get(
+          `${process.env.BACKEND_URL}/api/articles`
+        );
         setArticles(response.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
@@ -21,7 +23,7 @@ export default function Home() {
 
   const deleteArticle = async (id) => {
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`);
+      await axios.delete(`${process.env.BACKEND_URL}/api/articles/${id}`);
       setArticles(articles.filter((article) => article._id !== id));
     } catch (error) {
       console.error("Error deleting article:", error);
@@ -40,7 +42,6 @@ export default function Home() {
 
       <div className="grid gap-4">
         {articles.map((article) => (
-          
           <div
             key={article._id}
             className="p-4 border rounded-lg shadow-md flex justify-between items-center"
@@ -48,14 +49,16 @@ export default function Home() {
             <div className="flex flex-col">
               {article.image && (
                 <img
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${article.image}`}
+                  src={`${process.env.BACKEND_URL}${article.image}`}
                   alt={article.title}
                   className="w-32 h-32 object-cover mb-4"
                 />
               )}
               <h2 className="text-xl font-semibold">{article.title}</h2>
-              <p>{article.description}</p> 
-              <p className="text-sm text-gray-500">{article.content.slice(0, 100)}...</p> 
+              <p>{article.description}</p>
+              <p className="text-sm text-gray-500">
+                {article.content.slice(0, 100)}...
+              </p>
             </div>
             <div className="flex gap-2">
               <Link

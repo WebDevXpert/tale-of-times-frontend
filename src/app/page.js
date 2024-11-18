@@ -13,13 +13,12 @@ import Newsletter from "./Components/NewsLatter/Page";
 import UpdatedNews from "./Components/UpdatedNews.jsx/page";
 
 export default function Home() {
-  
   return (
     <div>
       <FeaturedArticles />
       <InfoBoard />
       <Newsletter />
-      <UpdatedNews/>
+      <UpdatedNews />
       <StockMarket />
       <LatestTechnology />
       <PoliticsSection />

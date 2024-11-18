@@ -12,31 +12,30 @@ export default function EditArticle() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null); 
-  const [currentImage, setCurrentImage] = useState(""); 
+  const [image, setImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState("");
 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`
+          `${process.env.BACKEND_URL}/api/articles/${id}`
         );
         setTitle(response.data.title);
         setContent(response.data.content);
         setDescription(response.data.description);
         setCurrentImage(
           response.data.image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${response.data.image}`
+            ? `${process.env.BACKEND_URL}/images/${response.data.image}`
             : ""
         );
       } catch (error) {
         console.error("Error fetching article:", error);
       }
     };
-  
+
     fetchArticle();
   }, [id]);
-  
 
   const updateArticle = async (e) => {
     e.preventDefault();
@@ -51,11 +50,15 @@ export default function EditArticle() {
     }
 
     try {
-      await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.put(
+        `${process.env.BACKEND_URL}/api/articles/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       router.push("/admin");
     } catch (error) {
       console.error("Error updating article:", error);
@@ -100,12 +103,16 @@ export default function EditArticle() {
           <label className="block text-sm font-medium">Image</label>
           {currentImage && (
             <div>
-              <img src={currentImage} alt="Current Article Image" className="w-full h-auto mb-4" />
+              <img
+                src={currentImage}
+                alt="Current Article Image"
+                className="w-full h-auto mb-4"
+              />
             </div>
           )}
           <input
             type="file"
-            onChange={(e) => setImage(e.target.files[0])} 
+            onChange={(e) => setImage(e.target.files[0])}
             className="mt-1 p-2 border rounded w-full"
           />
         </div>

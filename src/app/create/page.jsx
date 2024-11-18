@@ -10,30 +10,27 @@ export default function CreateArticle() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);  
+  const [image, setImage] = useState(null);
 
   const createArticle = async (e) => {
     e.preventDefault();
 
-    
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
     formData.append("description", description);
-    
-    
+
     if (image) {
       formData.append("image", image);
     }
 
     try {
-     
-      await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`, formData, {
+      await axios.post(`${process.env.BACKEND_URL}/api/articles`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      router.push("/admin");  
+      router.push("/admin");
     } catch (error) {
       console.error("Error creating article:", error);
     }
@@ -67,7 +64,7 @@ export default function CreateArticle() {
           <label className="block text-sm font-medium">Description</label>
           <textarea
             value={description}
-            onChange={(e) => setDescription(e.target.value)} 
+            onChange={(e) => setDescription(e.target.value)}
             className="mt-1 p-2 border rounded w-full"
             rows="2"
             required
@@ -77,7 +74,7 @@ export default function CreateArticle() {
           <label className="block text-sm font-medium">Image</label>
           <input
             type="file"
-            onChange={(e) => setImage(e.target.files[0])}  
+            onChange={(e) => setImage(e.target.files[0])}
             className="mt-1 p-2 border rounded w-full"
           />
         </div>
