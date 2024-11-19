@@ -34,7 +34,6 @@ export default function CreateArticle() {
           },
         }
       );
-      console.log("environment url", process.env.NEXT_PUBLIC_BACKEND_URL);
       router.push("/admin");
     } catch (error) {
       console.error("Error creating article:", error);

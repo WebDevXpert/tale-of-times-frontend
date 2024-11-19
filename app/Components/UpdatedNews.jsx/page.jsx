@@ -11,7 +11,6 @@ const UpdatedNews = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`
         );
-        console.log(`url: ${process.env.NEXT_PUBLIC_BACKEND_URL}`);
         setArticles(response.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
