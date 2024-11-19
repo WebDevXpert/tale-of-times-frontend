@@ -9,9 +9,9 @@ const UpdatedNews = () => {
     const fetchArticles = async () => {
       try {
         const response = await axios.get(
-          `${process.env.API_BACKEND_URL}/api/articles`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`
         );
-        console.log(`url: ${process.env.API_BACKEND_URL}`);
+        console.log(`url: ${process.env.NEXT_PUBLIC_BACKEND_URL}`);
         setArticles(response.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
@@ -37,7 +37,7 @@ const UpdatedNews = () => {
           articles.map((article, index) => (
             <div key={index} className="rounded-lg overflow-hidden">
               <img
-                src={`${process.env.API_BACKEND_URL}${article.image}`}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${article.image}`}
                 alt={article.title}
                 className="w-full h-48 object-cover"
               />

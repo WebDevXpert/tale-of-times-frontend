@@ -26,7 +26,7 @@ export default function CreateArticle() {
 
     try {
       await axios.post(
-        `${process.env.API_BACKEND_URL}/api/articles`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`,
         formData,
         {
           headers: {
@@ -34,7 +34,7 @@ export default function CreateArticle() {
           },
         }
       );
-      console.log("environment url", process.env.API_BACKEND_URL);
+      console.log("environment url", process.env.NEXT_PUBLIC_BACKEND_URL);
       router.push("/admin");
     } catch (error) {
       console.error("Error creating article:", error);

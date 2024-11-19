@@ -11,9 +11,9 @@ export default function Home() {
     const fetchArticles = async () => {
       try {
         const response = await axios.get(
-          `${process.env.API_BACKEND_URL}/api/articles`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`
         );
-        console.log(`url: ${process.env.API_BACKEND_URL}`);
+        console.log(`url: ${process.env.NEXT_PUBLIC_BACKEND_URL}`);
         setArticles(response.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
@@ -24,7 +24,9 @@ export default function Home() {
 
   const deleteArticle = async (id) => {
     try {
-      await axios.delete(`${process.env.API_BACKEND_URL}/api/articles/${id}`);
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`
+      );
       setArticles(articles.filter((article) => article._id !== id));
     } catch (error) {
       console.error("Error deleting article:", error);
@@ -50,7 +52,7 @@ export default function Home() {
             <div className="flex flex-col">
               {article.image && (
                 <img
-                  src={`${process.env.API_BACKEND_URL}${article.image}`}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${article.image}`}
                   alt={article.title}
                   className="w-32 h-32 object-cover mb-4"
                 />
