@@ -19,14 +19,14 @@ export default function EditArticle() {
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`
+          `${process.env.API_BACKEND_URL}/api/articles/${id}`
         );
         setTitle(response.data.title);
         setContent(response.data.content);
         setDescription(response.data.description);
         setCurrentImage(
           response.data.image
-            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${response.data.image}`
+            ? `${process.env.API_BACKEND_URL}/images/${response.data.image}`
             : ""
         );
       } catch (error) {
@@ -51,7 +51,7 @@ export default function EditArticle() {
 
     try {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles/${id}`,
+        `${process.env.API_BACKEND_URL}/api/articles/${id}`,
         formData,
         {
           headers: {
