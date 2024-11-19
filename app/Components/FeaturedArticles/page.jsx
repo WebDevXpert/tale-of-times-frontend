@@ -39,7 +39,8 @@ const FeaturedArticles = () => {
       <div className="w-full  relative md:w-1/2 lg:w-[44.333333%] ">
         <div className="-z-10 relative">
           <img
-            src={articles[0].imageUrl}
+            // src={articles[0].imageUrl}
+            src="./images/business-blog-latest-news-image-1.jpg"
             alt={articles[0].title}
             className="w-full rounded-lg"
           />
