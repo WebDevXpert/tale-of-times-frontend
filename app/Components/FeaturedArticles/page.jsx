@@ -41,7 +41,7 @@ const FeaturedArticles = () => {
           <img
             // src={articles[0].imageUrl}
             src="./images/business-blog-latest-news-image-1.jpg"
-            alt="{articles[0].title}"
+            alt="article"
             className="w-full rounded-lg"
           />
           <div className="absolute bottom-0 w-full left-0 bg-opacity-50 bg-black text-white p-5">
