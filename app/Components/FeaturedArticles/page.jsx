@@ -41,7 +41,7 @@ const FeaturedArticles = () => {
         <div className="-z-10 relative">
           <Image
             // src={articles[0].imageUrl}
-            src="/images/business-blog-latest-news-image-1.jpg"
+            src={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/business-blog-latest-news-image-1.jpg`}
             alt="article"
             className="w-full rounded-lg"
             width={100}
