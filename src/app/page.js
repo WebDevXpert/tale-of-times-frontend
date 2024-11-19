@@ -11,6 +11,7 @@ import InfoBoard from "./Components/infoboard/page";
 import MergedComponent from "./Components/MustRead/page";
 import Newsletter from "./Components/NewsLatter/Page";
 import UpdatedNews from "./Components/UpdatedNews.jsx/page";
+import Footer from "./Components/Footer/Page";
 
 export default function Home() {
   return (
