@@ -25,11 +25,16 @@ export default function CreateArticle() {
     }
 
     try {
-      await axios.post(`${process.env.BACKEND_URL}/api/articles`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/articles`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("environment url", process.env.NEXT_PUBLIC_BACKEND_URL);
       router.push("/admin");
     } catch (error) {
       console.error("Error creating article:", error);
