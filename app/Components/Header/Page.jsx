@@ -1,5 +1,7 @@
 "use client";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -16,9 +18,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         ✕
       </button>
       <nav className="flex flex-col mt-10">
-        <a href="#" className="mx-5 text-blue-400 my-2">
+        <Link href="/" className="mx-5 text-blue-400 my-2">
           Home
-        </a>
+        </Link>
         <a href="#" className="mx-5 hover:text-blue-400  my-2">
           Stock Market
         </a>
@@ -69,6 +71,7 @@ const Responsive = ({ toggleSidebar }) => {
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [width, setWidth] = useState(0);
+  const navigate = useRouter();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -110,15 +113,18 @@ const Header = () => {
                   />
                 </svg>
               </a>
-              <button className="text-[15px] px-10 py-[10px] group hover:bg-black border-black border-[1px]">
-                <p className="group-hover:text-white font-bold">Subscribe</p>
+              <button
+                className="text-[15px] px-10 py-[10px] group hover:bg-black border-black border-[1px]"
+                onClick={() => navigate.push("/admin")}
+              >
+                <p className="group-hover:text-white font-bold">Admin Panel</p>
               </button>
             </div>
 
             <div className="flex justify-center p-4">
-              <a href="#" className="mx-5">
+              <Link href="/" className="mx-5">
                 Home
-              </a>
+              </Link>
               <a href="#" className="mx-5">
                 Stock Market
               </a>
