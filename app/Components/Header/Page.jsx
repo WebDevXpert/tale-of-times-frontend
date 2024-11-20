@@ -115,7 +115,7 @@ const Header = () => {
               </a>
               <button
                 className="text-[15px] px-10 py-[10px] group hover:bg-black border-black border-[1px]"
-                onClick={() => navigate.push("/admin")}
+                onClick={() => navigate.push("/login")}
               >
                 <p className="group-hover:text-white font-bold">Admin Panel</p>
               </button>
